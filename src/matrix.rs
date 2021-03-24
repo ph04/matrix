@@ -132,7 +132,7 @@ impl<const M: usize, const N: usize> ops::Sub for Matrix<M, N> {
     }
 }
 
-impl<const M: usize, const L: usize, const N: usize>  ops::Mul<Matrix<L, N>> for Matrix<M, L> {
+impl<const M: usize, const L: usize, const N: usize> ops::Mul<Matrix<L, N>> for Matrix<M, L> {
     type Output = Matrix<M, N>;
     
     fn mul(self, other: Matrix<L, N>) -> Matrix<M, N> {
