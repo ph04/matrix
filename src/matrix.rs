@@ -77,9 +77,9 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
     pub fn transpose(&self) -> Matrix<N, M> {
         let mut body = [[0.0; M]; N];
 
-        for r in 0..N {
-            for c in 0..M {
-                body[r][c] = self.get((c, r))
+        for c in 0..N {
+            for r in 0..M {
+                body[c][r] = self.get((r, c))
             }
         }
 
