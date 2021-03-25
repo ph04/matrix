@@ -78,13 +78,9 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
         let mut body = [[0.0; M]; N];
 
         for r in 0..N {
-            let mut col = [0.0; M];
-
             for c in 0..M {
-                col[c] = self.get((c, r))
+                body[r][c] = self.get((c, r))
             }
-
-            body[r] = col;
         }
 
         Matrix { body }
