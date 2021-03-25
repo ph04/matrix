@@ -86,7 +86,7 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
         Matrix { body }
     }
 
-    pub fn for_each_mut<F>(&mut self, function: F)
+    pub fn for_each<F>(&mut self, function: F)
     where
         F: Fn(f32) -> f32
     {
