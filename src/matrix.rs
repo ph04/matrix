@@ -61,8 +61,14 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
     }
 
     pub fn with_capacity() -> Self {
-        Matrix {
+        Self {
             body: [[0.0; N]; M]
+        }
+    }
+
+    pub fn splat(n: f32) -> Self {
+        Self {
+            body: [[n; N]; M]
         }
     }
 
