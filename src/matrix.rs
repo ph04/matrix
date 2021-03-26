@@ -51,13 +51,8 @@ pub struct Matrix<const M: usize, const N: usize> {
 }
 
 impl<const M: usize, const N: usize> Matrix<M, N> {
-    pub fn new(body: [[f32; N]; M]) -> Result<Self, MatrixError> {
-        match (M, N) {
-            (0, _) | (_, 0) => Err(MatrixError::EmptyDimension),
-            (_, _) => Ok(Self {
-                body
-            })
-        }
+    pub fn new(body: [[f32; N]; M]) -> Self {
+        Self { body }
     }
 
     pub fn with_capacity() -> Self {
@@ -251,18 +246,3 @@ impl<const M: usize, const N: usize> ops::DivAssign<f32> for Matrix<M, N> {
         self.body.iter_mut().for_each(|row| row.iter_mut().for_each(|e| *e /= other));
     }
 }
-
-#[derive(Debug, Clone, Copy)]
-pub enum MatrixError {
-    EmptyDimension,
-}
-
-impl fmt::Display for MatrixError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            MatrixError::EmptyDimension => write!(f, "The dimensions of the matrix can't be 0."),
-        }
-    }
-}
-
-impl error::Error for MatrixError {}
