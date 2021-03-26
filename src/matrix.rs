@@ -1,4 +1,4 @@
-use std::{error, fmt, ops};
+use std::{fmt, ops};
 
 pub const I_2: Matrix<2, 2> = Matrix {
     body: [
