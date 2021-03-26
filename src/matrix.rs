@@ -93,9 +93,7 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
     }
 
     pub fn swap_row(&mut self, i1: usize, i2: usize) {
-        let t = self.body[i1];
-        self.body[i1] = self.body[i2];
-        self.body[i2] = t;
+        self.body.swap(i1, i2);
     }
 
     pub fn for_each<F>(&mut self, function: F)
