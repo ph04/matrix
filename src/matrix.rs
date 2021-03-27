@@ -55,13 +55,13 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
         Self { body }
     }
 
-    pub fn with_capacity() -> Self {
+    pub fn zeros() -> Self {
         Self {
             body: [[0.0; N]; M]
         }
     }
 
-    pub fn splat(n: f32) -> Self {
+    pub fn fill(n: f32) -> Self {
         Self {
             body: [[n; N]; M]
         }
@@ -78,11 +78,9 @@ impl<const M: usize, const N: usize> Matrix<M, N> {
     pub fn transpose(&self) -> Matrix<N, M> {
         let mut body = [[0.0; M]; N];
 
-        for c in 0..N {
-            for r in 0..M {
-                body[c][r] = self.get((r, c))
-            }
-        }
+        body.iter_mut().enumerate().for_each(|(c, row)| {
+            row.iter_mut().enumerate().for_each(|(r, e)| *e = self.get((r, c)))
+        });
 
         Matrix { body }
     }
