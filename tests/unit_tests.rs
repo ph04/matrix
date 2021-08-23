@@ -1,10 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use matrix::matrix::{
-        Matrix,
-        I_2, I_3, I_4,
-        R90_2, R180_2, R270_2
-    };
+    use small_matrix::matrix::*;
 
     #[test]
     fn i_2_test() {
